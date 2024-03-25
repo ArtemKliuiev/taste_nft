@@ -17,7 +17,5 @@ import SvgManager from '@/components/Base/SvgManager.vue'
 </script>
 
 <style lang="scss">
-h1 {
-  font-family: Raleway;
-}
+@import url(../src/assets/fonts/poppins/poppins.scss);
 </style>
