@@ -1,6 +1,4 @@
 
-@import "../../fonts/raleway/raleway";
-@import "../../fonts/roboto/roboto";
-body{
-  font-family: Poppins;
-}
+@import url(/src/assets/fonts/poppins/poppins.scss);
+@import url(/src/assets/fonts/raleway/raleway.scss);
+@import url(/src/assets/fonts/roboto/roboto.scss);

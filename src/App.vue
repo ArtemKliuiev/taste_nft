@@ -16,6 +16,4 @@ import TheSearch from '@/components/Base/TheSearch.vue'
 import SvgManager from '@/components/Base/SvgManager.vue'
 </script>
 
-<style lang="scss">
-@import url(../src/assets/fonts/poppins/poppins.scss);
-</style>
+<style lang="scss"></style>

@@ -1,19 +1,33 @@
 <template>
   <header class="header">
-    <div class="header__logo"></div>
-
-    <div class="header__search">
-      <input type="text" />
+    <div class="header__logo">
+      <picture>
+        <source srcset="/public/images/logo.webp" type="image/webp" />
+        <img src="/public/images/logo.png" alt="logo" />
+      </picture>
     </div>
 
-    <button class="header__btn btn">Connect wallet</button>
+    <div class="header__search">
+      <svg><use xlink:href="#search"></use></svg>
+
+      <input type="text" placeholder="Search for ..." />
+    </div>
+
+    <div class="header__btn">
+      <UIButton>Connect wallet</UIButton>
+    </div>
   </header>
 </template>
 
-<script setup></script>
+<script setup>
+import UIButton from '@/components/UI/UIButton.vue'
+</script>
 
 <style lang="scss" scoped>
 .header {
+  position: fixed;
+  top: 0;
+  width: 100%;
   background: #30363d;
   height: 56px;
   display: flex;
@@ -23,21 +37,47 @@
   border-radius: 0px 0px 32px 32px;
 
   &__logo {
-    background: red;
-    width: 80px;
-    height: 30px;
+    margin-left: 5px;
+    img {
+      width: 37.93px;
+      height: 35.65px;
+    }
   }
 
   &__search {
-    background: #1d2228;
-    width: 100%;
+    position: relative;
+    flex-grow: 1;
+    max-width: 100%;
+    margin: 0 16px 0 28px;
     input {
       width: 100%;
+      height: 32px;
+      padding: 0 0 0 41px;
+      background: #1d2228;
+      border: none;
+      border-radius: 12px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 12px;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    svg {
+      position: absolute;
+      left: 14.5px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
     }
   }
 
   &__btn {
-    height: 30px;
+    width: 126px;
+    height: 32px;
   }
 }
 </style>
