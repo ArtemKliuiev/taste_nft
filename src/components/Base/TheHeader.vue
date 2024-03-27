@@ -15,7 +15,7 @@
     </div>
   </header>
   <div class="info">{{ info }}</div>
-  <!--  <TheSearch />-->
+  <TheSearch v-show="true || info != ''" />
 </template>
 
 <script setup>
@@ -23,9 +23,10 @@ import BaseSvg from '@/components/Base/BaseSvg.vue'
 import UIButton from '@/components/UI/UIButton.vue'
 import BasePicture from '@/components/Base/BasePicture.vue'
 import BaseInput from '@/components/Base/BaseInput.vue'
+import TheSearch from '@/components/Base/TheSearch.vue'
+import { ref } from 'vue'
 
-let info
-// import TheSearch from '@/components/Base/TheSearch.vue'
+let info = ref('')
 </script>
 
 <style lang="scss">

@@ -6,5 +6,16 @@
         fill="white"
       />
     </symbol>
+
+    <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7 3" id="dropArrow">
+      <defs />
+      <path
+        id="Polygon 1"
+        d="M3 3L6.46 -0.75L-0.47 -0.75L3 3Z"
+        fill="#FFFFFF"
+        fill-opacity="1.000000"
+        fill-rule="evenodd"
+      />
+    </symbol>
   </svg>
 </template>
