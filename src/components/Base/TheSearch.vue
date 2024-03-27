@@ -1,13 +1,15 @@
 <template>
-  <div>
-
-  </div>
+  <div class="search"></div>
 </template>
 
-<script setup>
+<script setup></script>
 
-</script>
-
-<style lang="scss" scoped>
-
+<style lang="scss">
+.search {
+  background: red;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
 </style>
