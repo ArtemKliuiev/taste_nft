@@ -26,12 +26,8 @@ import BaseInput from '@/components/Base/BaseInput.vue'
 
 let info
 // import TheSearch from '@/components/Base/TheSearch.vue'
-
-setInterval(() => {
-  console.log(info)
-}, 500)
 </script>
-
+g
 <style lang="scss">
 .info {
   background: red;
