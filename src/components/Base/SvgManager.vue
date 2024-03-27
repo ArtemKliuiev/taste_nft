@@ -8,5 +8,3 @@
     </symbol>
   </svg>
 </template>
-
-<!--<svg><use xlink:href="#zoom"></use></svg>-->

@@ -7,6 +7,8 @@
 </template>
 
 <style scoped lang="scss">
+@import '@/assets/scss/base/base';
+
 button {
   position: relative;
   box-shadow: 0 15px 30px 0 rgba(20, 102, 204, 0.16);
@@ -42,7 +44,9 @@ button {
 
   &:hover {
     &:after {
-      animation: flash 300ms ease;
+      @include media-breakpoint-up(md) {
+        animation: flash 300ms ease;
+      }
     }
   }
 

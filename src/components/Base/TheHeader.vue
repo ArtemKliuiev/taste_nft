@@ -1,31 +1,44 @@
 <template>
   <header class="header">
     <div class="header__logo">
-      <picture>
-        <source srcset="/public/images/logo.webp" type="image/webp" />
-        <img src="/public/images/logo.png" alt="logo" />
-      </picture>
+      <BasePicture :srcset="'logo.webp'" :src="'logo.png'" :alt="'logo'" />
     </div>
 
     <div class="header__search">
-      <svg><use xlink:href="#search"></use></svg>
+      <BaseSvg :id="'search'" />
 
-      <input type="text" placeholder="Search for ..." />
+      <BaseInput :id="'header-input'" @inputValur="(e) => (info = e.message)" />
     </div>
 
     <div class="header__btn">
       <UIButton>Connect wallet</UIButton>
     </div>
   </header>
+  <div class="info">{{ info }}</div>
+  <!--  <TheSearch />-->
 </template>
 
 <script setup>
+import BaseSvg from '@/components/Base/BaseSvg.vue'
 import UIButton from '@/components/UI/UIButton.vue'
+import BasePicture from '@/components/Base/BasePicture.vue'
+import BaseInput from '@/components/Base/BaseInput.vue'
+
+let info
+// import TheSearch from '@/components/Base/TheSearch.vue'
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+.info {
+  background: red;
+  width: 140px;
+  height: 140px;
+  margin: 100px;
+}
+
 .header {
   position: fixed;
+  z-index: 10;
   top: 0;
   width: 100%;
   background: #30363d;
