@@ -14,7 +14,7 @@ const router = createRouter({
       component: () => import('@/pages/AccountPage.vue')
     },
     {
-      path: '/auction',
+      path: '/auction/:id',
       name: 'auction',
       component: () => import('@/pages/AuctionPage.vue')
     },
