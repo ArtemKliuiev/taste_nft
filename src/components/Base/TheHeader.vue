@@ -5,9 +5,10 @@
     </div>
 
     <div class="header__search">
-      <BaseSvg :id="'search'" />
+      <BaseSvg id="search" />
 
-      <BaseInput :id="'header-input'" @inputValur="(e) => (info = e.message)" />
+      <BaseInput :id="'header-input'" v-model="pizda" />
+
     </div>
 
     <div class="header__btn">
@@ -25,7 +26,6 @@ import BasePicture from '@/components/Base/BasePicture.vue'
 import BaseInput from '@/components/Base/BaseInput.vue'
 
 let info
-// import TheSearch from '@/components/Base/TheSearch.vue'
 </script>
 
 <style lang="scss">
