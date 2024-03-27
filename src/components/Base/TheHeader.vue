@@ -27,7 +27,7 @@ import BaseInput from '@/components/Base/BaseInput.vue'
 let info
 // import TheSearch from '@/components/Base/TheSearch.vue'
 </script>
-g
+
 <style lang="scss">
 .info {
   background: red;
