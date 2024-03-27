@@ -2,11 +2,12 @@
   <input
     type="text"
     placeholder="Search for ..."
-    :id="id ? id : ''"
-    @input="(event) => $emit('inputValur', { message: event.target.value })"
+    :value="props.modelValue"
+    @input="emit('update:modelValue', $event.target.value)"
   />
 </template>
 
 <script setup>
-defineProps(['id'])
+const props = defineProps(['modelValue'])
+const emit = defineEmits(['update:modelValue'])
 </script>

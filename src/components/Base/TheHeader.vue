@@ -5,9 +5,9 @@
     </div>
 
     <div class="header__search">
-      <BaseSvg :id="'search'" />
+      <BaseSvg id="search" />
 
-      <BaseInput :id="'header-input'" @inputValur="(e) => (info = e.message)" />
+      <BaseInput :id="'header-input'" v-model="pizda" />
     </div>
 
     <div class="header__btn">
@@ -63,6 +63,7 @@ let info = ref('')
     flex-grow: 1;
     max-width: 100%;
     margin: 0 16px 0 28px;
+
     input {
       width: 100%;
       height: 32px;
