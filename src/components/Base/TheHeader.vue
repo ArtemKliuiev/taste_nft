@@ -49,6 +49,7 @@ import UIButton from '@/components/UI/UIButton.vue'
     flex-grow: 1;
     max-width: 100%;
     margin: 0 16px 0 28px;
+
     input {
       width: 100%;
       height: 32px;

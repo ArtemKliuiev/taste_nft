@@ -1,13 +1,15 @@
 <script setup></script>
 
 <template>
-  <button><slot></slot></button>
+  <button>
+    <slot/>
+  </button>
 </template>
 
 <style scoped lang="scss">
 button {
   position: relative;
-  box-shadow: 0px 15px 30px 0px rgba(20, 102, 204, 0.16);
+  box-shadow: 0 15px 30px 0 rgba(20, 102, 204, 0.16);
   background: linear-gradient(270deg, rgb(135, 67, 255), rgb(65, 54, 241) 100%);
   width: 100%;
   height: 100%;

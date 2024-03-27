@@ -51,7 +51,7 @@
 
         <div class="price">
           <p>
-            {{timer  }}
+            {{ timer }}
           </p>
         </div>
       </div>
@@ -79,32 +79,36 @@ function countdown(hours) {
     return
   }
 
-  let totalSeconds = hours * 3600;
+  let totalSeconds = hours * 3600
 
-  let interval = setInterval(function() {
-    let hoursLeft = Math.floor(totalSeconds / 3600);
-    let minutesLeft = Math.floor((totalSeconds % 3600) / 60);
-    let secondsLeft = totalSeconds % 60;
+  let interval = setInterval(function () {
+    let hoursLeft = Math.floor(totalSeconds / 3600)
+    let minutesLeft = Math.floor((totalSeconds % 3600) / 60)
+    let secondsLeft = totalSeconds % 60
 
     timer.value =
-      (hoursLeft < 10 ? "0" : "") + hoursLeft + "h " +
-      (minutesLeft < 10 ? "0" : "") + minutesLeft + "m " +
-      (secondsLeft < 10 ? "0" : "") + secondsLeft + "s";
+      (hoursLeft < 10 ? '0' : '') +
+      hoursLeft +
+      'h ' +
+      (minutesLeft < 10 ? '0' : '') +
+      minutesLeft +
+      'm ' +
+      (secondsLeft < 10 ? '0' : '') +
+      secondsLeft +
+      's'
 
     if (totalSeconds === 0) {
-      clearInterval(interval);
+      clearInterval(interval)
     } else {
-      totalSeconds--;
+      totalSeconds--
     }
-  }, 1000);
+  }, 1000)
 }
 
-
-onMounted(()=>{
+onMounted(() => {
   countdown(props.price.time)
   timer.value = `${timer.value}h 00m 00s`
 })
-
 </script>
 
 <style scoped lang="scss">
@@ -176,6 +180,7 @@ onMounted(()=>{
 
     &-btn {
       width: 100%;
+
       button {
         padding: 12px 0;
       }
