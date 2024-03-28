@@ -112,9 +112,16 @@ onMounted(() => {
 </script>
 
 <style scoped lang="scss">
+@import "@/assets/scss/base/base.scss";
+
 .auction-banner {
   position: relative;
   padding-top: 44%;
+
+  @include media-breakpoint-down(xs) {
+    padding-top: unset;
+    height: 400px;
+  }
 
   &__background {
     position: absolute;
@@ -139,6 +146,13 @@ onMounted(() => {
     gap: 38px;
     white-space: nowrap;
 
+    @include media-breakpoint-down(xs) {
+      flex-direction: column;
+      min-width: unset;
+      width: 90%;
+      margin: 0 auto;
+    }
+
     &::after {
       content: '';
       position: absolute;
@@ -149,6 +163,10 @@ onMounted(() => {
       height: 60%;
       border-radius: 12px;
       transform: translate(-50%, -50%);
+
+      @include media-breakpoint-down(xs) {
+        display: none;
+      }
     }
 
     h6 {
@@ -163,6 +181,10 @@ onMounted(() => {
       align-items: center;
       gap: 5px;
 
+      @include media-breakpoint-down(xs) {
+        justify-content: center;
+      }
+
       p {
         font-weight: 600;
         color: white;
@@ -176,6 +198,22 @@ onMounted(() => {
 
     &-price {
       width: 100%;
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        bottom: -20px;
+        background: rgba(255, 255, 255, 0.15);
+        display: none;
+
+        @include media-breakpoint-down(xs) {
+          display: block;
+        }
+      }
     }
 
     &-btn {
@@ -191,6 +229,14 @@ onMounted(() => {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
 
+      @include media-breakpoint-down(xs) {
+        min-width: unset;
+        grid-template-columns: repeat(1, 1fr);
+        width: 90%;
+        margin: 0 auto;
+        text-align: center;
+      }
+
       .auction-banner__label-price {
         position: relative;
 
@@ -204,6 +250,10 @@ onMounted(() => {
           height: 100%;
           border-radius: 12px;
           transform: translateY(-50%);
+
+          @include media-breakpoint-down(xs) {
+            display: none;
+          }
         }
       }
 

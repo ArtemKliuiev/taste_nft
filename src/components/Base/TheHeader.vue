@@ -42,6 +42,7 @@ const search = ref('')
   width: 140px;
   height: 140px;
   margin: 100px;
+  display: none;
 }
 
 .header {

@@ -20,6 +20,7 @@ function getInfo(e) {
 
 <style lang="scss">
 .search {
+  display: none;
   padding: 88px 0 0 0;
   background: #1d2228;
   position: fixed;

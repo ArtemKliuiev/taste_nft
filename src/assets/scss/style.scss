@@ -1,16 +1,14 @@
 @import 'base/fonts';
 @import 'base/reset';
 
-
-body{
+body {
   font-family: Raleway;
   background: #1d2228;
   color: rgb(255, 255, 255);
 }
 
-[class*="__container"] {
-  max-width: 1316px;
+.container {
+  max-width: 1350px;
   margin: 0 auto;
   padding: 0 15px;
 }
-
