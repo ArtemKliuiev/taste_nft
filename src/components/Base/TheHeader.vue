@@ -1,21 +1,25 @@
 <template>
   <header class="header">
     <div class="header__logo">
-      <BasePicture :srcset="'logo.webp'" :src="'logo.png'" :alt="'logo'" />
+      <BasePicture
+        :srcset="'/taste_nft/public/images/logo.webp'"
+        :src="'/taste_nft/public/images/logo.png'"
+        :alt="'logo'"
+      />
     </div>
 
     <div class="header__search">
       <BaseSvg id="search" />
 
-      <BaseInput :id="'header-input'" v-model="pizda" />
+      <BaseInput :id="'header-input'" v-model="search" :placeholder="'Search for ...'" />
     </div>
 
     <div class="header__btn">
       <UIButton>Connect wallet</UIButton>
     </div>
   </header>
-  <div class="info">{{ info }}</div>
-  <TheSearch v-show="true || info != ''" />
+  <div class="info">{{ search }}</div>
+  <TheSearch v-show="search || true" />
 </template>
 
 <script setup>
@@ -26,7 +30,10 @@ import BaseInput from '@/components/Base/BaseInput.vue'
 import TheSearch from '@/components/Base/TheSearch.vue'
 import { ref } from 'vue'
 
-let info = ref('')
+// const emit = defineEmits(['submit'])
+// console.log(emit)
+
+const search = ref('')
 </script>
 
 <style lang="scss">
@@ -48,13 +55,14 @@ let info = ref('')
   justify-content: space-between;
   align-items: center;
   padding: 0 24px;
-  border-radius: 0px 0px 32px 32px;
+  border-radius: 0 0 32px 32px;
 
   &__logo {
     margin-left: 5px;
+
     img {
-      width: 37.93px;
-      height: 35.65px;
+      width: 38px;
+      height: 36px;
     }
   }
 

@@ -1,13 +1,21 @@
 <template>
   <div class="search">
     <div class="search__container">
-      <DropDpwn :list="['Recently added', 'Popular', 'The best']" :id="'drop-one'" />
+      <DropDown
+        :list="['Recently added', 'Popular', 'The best']"
+        :id="'drop-one'"
+        @submit="getInfo"
+      />
     </div>
   </div>
 </template>
 
 <script setup>
-import DropDpwn from '@/components/Reusable/DropDpwn.vue'
+import DropDown from '@/components/Reusable/DropDown.vue'
+
+function getInfo(e) {
+  console.log(e)
+}
 </script>
 
 <style lang="scss">

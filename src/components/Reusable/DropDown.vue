@@ -1,12 +1,17 @@
 <template>
-  <div ref="drop" @click="toggleActive()" :class="{ dropdown_active: dropActive }" class="dropdown">
+  <div
+    ref="drop"
+    @click.stop="toggleActive()"
+    :class="{ dropdown_active: dropActive }"
+    class="dropdown"
+  >
     <div class="dropdown__btn">
-      <span>{{ 1 }}</span>
+      <span>{{ selected ? selected : list[0] }}</span>
 
       <BaseSvg :id="'dropArrow'" />
     </div>
     <ul class="dropdown__list">
-      <li @click="(event) => $emit(id, { message: event })" v-for="(item, id) in list" :key="id">
+      <li @click="select(item)" v-for="(item, id) in list" :key="id">
         {{ item }}
       </li>
     </ul>
@@ -17,16 +22,22 @@
 import BaseSvg from '@/components/Base/BaseSvg.vue'
 import { ref, onMounted } from 'vue'
 defineProps(['list', 'id'])
+const emit = defineEmits(['submit'])
 
 let dropActive = ref(false)
 //let selected = ref(list.value)
-const drop = ref()
+const drop = ref(null)
+const selected = ref('')
+
+function select(li) {
+  selected.value = li
+
+  emit('submit', li)
+}
 
 onMounted(() => {
-  window.addEventListener('click', (e) => {
-    if (!drop.value.contains(e.target)) {
-      dropActive.value = false
-    }
+  window.addEventListener('click', () => {
+    dropActive.value = false
   })
 })
 
@@ -95,13 +106,13 @@ function toggleActive() {
       text-align: center;
       white-space: nowrap;
       text-overflow: ellipsis;
-      transition:
-        color 300ms ease,
-        background-color 300ms ease;
 
       &:hover {
         background-color: #fff;
         color: #1d2228;
+        transition:
+          color 300ms ease,
+          background-color 300ms ease;
       }
     }
   }
