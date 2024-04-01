@@ -1,5 +1,5 @@
 <template>
-  <div class="user">
+  <div class="user" :class="{ 'user-new': nftCard }">
     <div class="user__photo">
       <BasePicture :src="user.photo.src" :alt="user.photo.alt" :srcset="user.photo.srcset" />
     </div>
@@ -18,6 +18,9 @@ import BasePicture from '@/components/Base/BasePicture.vue'
 defineProps({
   user: {
     type: Object
+  },
+  nftCard: {
+    type: Boolean
   }
 })
 </script>

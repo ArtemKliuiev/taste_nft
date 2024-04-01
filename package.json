@@ -12,7 +12,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "swiper": "^11.0.7",
+    "swiper": "^11.1.0",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0",
     "vue3-swiper": "^1.0.0"

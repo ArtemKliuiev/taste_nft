@@ -2,7 +2,7 @@
 
 <template>
   <button>
-    <slot/>
+    <slot />
   </button>
 </template>
 
@@ -28,6 +28,10 @@ button {
   border: none;
   cursor: pointer;
   overflow: hidden;
+
+  @include media-breakpoint-down(xxs) {
+    font-size: 10px;
+  }
 
   &:after {
     content: '';

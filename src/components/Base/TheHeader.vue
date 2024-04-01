@@ -2,8 +2,8 @@
   <header class="header">
     <div class="header__logo">
       <BasePicture
-        :srcset="'/taste_nft/public/images/logo.webp'"
-        :src="'/taste_nft/public/images/logo.png'"
+        :srcset="'/taste_nft/src/assets/images/logo.webp'"
+        :src="'/taste_nft/src/assets/images/logo.png'"
         :alt="'logo'"
       />
     </div>
@@ -19,7 +19,7 @@
     </div>
   </header>
   <div class="info">{{ search }}</div>
-  <TheSearch v-show="search || true" />
+  <TheSearch v-show="search || true" :search="search" />
 </template>
 
 <script setup>
@@ -37,6 +37,8 @@ const search = ref('')
 </script>
 
 <style lang="scss">
+@import '@/assets/scss/base/base';
+
 .info {
   background: red;
   width: 140px;
@@ -47,7 +49,7 @@ const search = ref('')
 
 .header {
   position: fixed;
-  z-index: 10;
+  z-index: 100;
   top: 0;
   width: 100%;
   background: #30363d;
@@ -58,12 +60,23 @@ const search = ref('')
   padding: 0 24px;
   border-radius: 0 0 32px 32px;
 
+  @include media-breakpoint-down(xs) {
+    padding: 0 15px;
+    height: 50px;
+  }
+
   &__logo {
     margin-left: 5px;
+    height: 36px;
+    aspect-ratio: 1.1/1;
+
+    @include media-breakpoint-down(xs) {
+      height: 25px;
+    }
 
     img {
-      width: 38px;
-      height: 36px;
+      width: 100%;
+      height: 100%;
     }
   }
 
@@ -72,6 +85,10 @@ const search = ref('')
     flex-grow: 1;
     max-width: 100%;
     margin: 0 16px 0 28px;
+
+    @include media-breakpoint-down(xs) {
+      margin: 0 10px 0 10px;
+    }
 
     input {
       width: 100%;
@@ -87,6 +104,10 @@ const search = ref('')
       &:focus {
         outline: none;
       }
+
+      @include media-breakpoint-down(xs) {
+        padding: 0 0 0 30px;
+      }
     }
 
     svg {
@@ -96,6 +117,10 @@ const search = ref('')
       transform: translateY(-50%);
       width: 20px;
       height: 20px;
+
+      @include media-breakpoint-down(xs) {
+        left: 5px;
+      }
     }
   }
 
