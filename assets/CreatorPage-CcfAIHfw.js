@@ -1,0 +1,1 @@
+import{_ as e,c as o,o as t,a as s}from"./index-BZ4uHZos.js";const a={},c=s("h1",null,"Создатель",-1),n=[c];function r(_,d,l,p,i,f){return t(),o("div",null,n)}const h=e(a,[["render",r]]);export{h as default};
