@@ -19,7 +19,7 @@
     </div>
   </header>
   <div class="info">{{ search }}</div>
-  <TheSearch v-show="search || true" :search="search" />
+  <TheSearch v-show="search" :search="search" />
 </template>
 
 <script setup>

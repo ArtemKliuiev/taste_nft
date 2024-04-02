@@ -1,5 +1,5 @@
 <template>
-  <div class="user" :class="{ 'user-new': nftCard }">
+  <div class="user" :class="{ 'user_nft-card': nftCard }">
     <div class="user__photo">
       <BasePicture :src="user.photo.src" :alt="user.photo.alt" :srcset="user.photo.srcset" />
     </div>
@@ -64,6 +64,46 @@ defineProps({
       font-size: 14px;
       line-height: 16px;
       margin-top: 4px;
+    }
+  }
+  &_nft-card {
+    gap: 8px;
+
+    .user {
+      &__photo {
+        width: 26px;
+        height: 26px;
+        border-radius: 8px;
+        flex-shrink: 0;
+
+        img {
+          border-radius: 8px;
+        }
+      }
+
+      &__label {
+        max-width: 75%;
+        h4 {
+          color: #1d2228;
+          font-size: 14px;
+          line-height: 16px;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+
+        p {
+          background: linear-gradient(270deg, rgb(135, 67, 255), rgb(65, 54, 241));
+          background-clip: text;
+          -webkit-background-clip: text;
+          margin: 0;
+          font-size: 12px;
+
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+      }
     }
   }
 }

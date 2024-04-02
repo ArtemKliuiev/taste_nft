@@ -6,14 +6,9 @@
           <UIDropDown
             :list="['Recently added', 'Popular', 'The best']"
             @submit="(e) => (sort = e)"
-            id="'drop-one'"
           />
 
-          <UIDropDown
-            :list="['All', 'Auctions', 'On sale']"
-            @submit="(e) => (filter = e)"
-            id="'drop-two'"
-          />
+          <UIDropDown :list="['All', 'Auctions', 'On sale']" @submit="(e) => (filter = e)" />
         </div>
 
         <div class="search__cards">
@@ -57,6 +52,8 @@ const currentNft = computed(() => {
     sortArray = searchArray.filter((nft) => nft.type === 'default')
   }
 
+  //разделить
+  //переделать if else на обьект
   if (sort.value === 'Recently added') {
     sortArray.sort((a, b) => a.sortInfo.recentlyAdded - b.sortInfo.recentlyAdded)
   } else if (sort.value === 'Popular') {
@@ -89,6 +86,7 @@ const currentNft = computed(() => {
   &__dropdowns {
     display: flex;
     gap: 12px;
+    margin-bottom: 24px;
   }
 
   &__main {
@@ -100,7 +98,6 @@ const currentNft = computed(() => {
   &__cards {
     width: 100%;
     height: 100%;
-    //background-color: rgba(135, 67, 255, 0.53);
     padding-bottom: 48px;
     display: grid;
     gap: 16px;
