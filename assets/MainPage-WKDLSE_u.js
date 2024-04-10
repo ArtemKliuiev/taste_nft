@@ -1,1 +1,0 @@
-import{_ as e,c as o,o as t,a as s}from"./index-fmq9YJfB.js";const a={},c=s("h1",null,"Главная W",-1),n=[c];function r(_,d,i,l,p,f){return t(),o("div",null,n)}const h=e(a,[["render",r]]);export{h as default};
