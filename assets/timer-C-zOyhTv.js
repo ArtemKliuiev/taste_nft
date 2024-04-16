@@ -1,0 +1,1 @@
+function u(t,e){if(e.value=`${e.value<10?"0"+e.value:e.value}h 00m 00s`,t<1||t>24)return;let l=t*3600,f=setInterval(function(){let a=Math.floor(l/3600),n=Math.floor(l%3600/60),o=l%60;e.value=(a<10?"0":"")+a+"h "+(n<10?"0":"")+n+"m "+(o<10?"0":"")+o+"s",l===0?clearInterval(f):l--},1e3)}export{u as c};
