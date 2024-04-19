@@ -1,0 +1,1 @@
+import{f as e,c as o,o as t,h as s}from"./index-Df0-WU7K.js";const c={},a=s("h1",null,"Создатель 33",-1),n=[a];function r(_,d,l,p,f,i){return t(),o("div",null,n)}const h=e(c,[["render",r]]);export{h as default};
