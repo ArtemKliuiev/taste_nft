@@ -1,48 +1,82 @@
 <template>
-  <swiper :slides-per-view="3" :space-between="50" @swiper="onSwiper" @slideChange="onSlideChange">
-    <swiper-slide>Slide 1</swiper-slide>
-    <swiper-slide>Slide 2</swiper-slide>
-    <swiper-slide>Slide 3</swiper-slide>
-    <swiper-slide>Slide 1</swiper-slide>
-    <swiper-slide>Slide 2</swiper-slide>
-    <swiper-slide>Slide 3</swiper-slide>
-    <swiper-slide>Slide 1</swiper-slide>
-    <swiper-slide>Slide 2</swiper-slide>
-    <swiper-slide>Slide 3</swiper-slide>
+  <swiper
+    class="user-swiper"
+    :slides-per-view="1.1"
+    :space-between="16"
+    :modules="modules"
+    :scrollbar="{
+      draggable: true
+    }"
+    :breakpoints="{
+      '320': {
+        slidesPerView: 1.1
+      },
+      '375': {
+        slidesPerView: 2.1
+      },
+      '576': {
+        slidesPerView: 3.1
+      },
+      '768': {
+        slidesPerView: 4.1
+      },
+      '1024': {
+        slidesPerView: 5.1
+      }
+    }"
+  >
+    <swiper-slide v-for="(user, index) in sliderUsers" :key="index">
+      <UISliderUser :userInfo="user" />
+    </swiper-slide>
   </swiper>
 </template>
-<script>
+<script setup>
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from 'swiper/vue'
+import { Scrollbar } from 'swiper/modules'
+import { users } from '@/data/user.js'
+import UISliderUser from '@/components/UI/UISliderUser.vue'
 
-// Import Swiper styles
+const sliderUsers = users.filter((user, id) => id < 10)
+
+const modules = [Scrollbar]
+
+import 'swiper/css/scrollbar'
+
 import 'swiper/css'
-
-export default {
-  components: {
-    Swiper,
-    SwiperSlide
-  },
-  setup() {
-    const onSwiper = (swiper) => {
-      console.log(swiper)
-    }
-    const onSlideChange = () => {
-      console.log('slide change')
-    }
-    return {
-      onSwiper,
-      onSlideChange
-    }
-  }
-}
+import { onMounted } from 'vue'
 </script>
-<style>
-.swiper {
-  width: 600px;
-  height: 300px;
+<style lang="scss">
+@import '@/assets/scss/base/base';
+
+.user-swiper {
+  padding-bottom: 25px;
 }
 .swiper-slide {
-  background: burlywood;
+  width: 100%;
+}
+
+.swiper-scrollbar {
+  width: 100vw !important;
+  height: 5px !important;
+  left: 0 !important;
+  max-width: 100% !important;
+  background: unset;
+
+  @include media-breakpoint-down(sm) {
+    display: none !important;
+  }
+}
+
+.swiper-scrollbar-drag {
+  background-color: $whiteOpacity;
+
+  &:hover {
+    background: $gradient;
+  }
+
+  &:active {
+    background: $gradient;
+  }
 }
 </style>

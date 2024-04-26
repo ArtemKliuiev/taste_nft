@@ -17,6 +17,13 @@ import { nft } from '@/data/nft.js'
 import { users } from '@/data/user.js'
 import AuctionBanner from '@/components/pages/auction/AuctionBanner.vue'
 import AuctionContent from '@/components/pages/auction/AuctionContent.vue'
+import { useSearchStore } from '@/data/store/store.js'
+import { onMounted } from 'vue'
+const searchStore = useSearchStore()
+
+onMounted(() => {
+  searchStore.search = ''
+})
 </script>
 
 <style lang="scss" scoped>

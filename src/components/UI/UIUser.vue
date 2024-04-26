@@ -1,5 +1,9 @@
 <template>
-  <div class="user" :class="{ 'user_nft-card': nftCard }">
+  <div
+    @click="clickUser"
+    class="user"
+    :class="{ 'user_nft-card': nftCard, user_follower: follower, user_profile: profile }"
+  >
     <div class="user__photo">
       <BasePicture :src="user.photo.src" :alt="user.photo.alt" :srcset="user.photo.srcset" />
     </div>
@@ -14,27 +18,53 @@
 
 <script setup>
 import BasePicture from '@/components/Base/BasePicture.vue'
+import { useRouter } from 'vue-router'
 
-defineProps({
+const props = defineProps({
   user: {
     type: Object
   },
   nftCard: {
     type: Boolean
+  },
+  follower: {
+    type: Boolean
+  },
+  profile: {
+    type: Boolean
   }
 })
+
+const router = useRouter()
+
+function clickUser() {
+  if (!props.nftCard && !props.profile) {
+    router.push('/user/' + props.user.id)
+  }
+}
 </script>
 
 <style lang="scss">
+@import '@/assets/scss/base/base';
+
 .user {
+  cursor: pointer;
   display: flex;
   align-items: center;
   gap: 12px;
 
+  &:hover {
+    .user__label {
+      @include media-breakpoint-up(md) {
+        opacity: 0.5;
+      }
+    }
+  }
+
   &__photo {
     width: 49px;
     height: 49px;
-    box-shadow: 0 0 15px 0 rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 15px 0 $whiteOpacityTwo;
     border-radius: 12px;
 
     img {
@@ -47,6 +77,7 @@ defineProps({
 
   &__label {
     font-family: Raleway, sans-serif;
+    transition: opacity 300ms ease;
 
     h4 {
       font-weight: 700;
@@ -56,7 +87,7 @@ defineProps({
     }
 
     p {
-      background: linear-gradient(270deg, #8743ff 0%, #d8c2ff 100%);
+      background: $gradientTwo;
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -68,6 +99,14 @@ defineProps({
   }
   &_nft-card {
     gap: 8px;
+
+    &:hover {
+      .user__label {
+        @include media-breakpoint-up(md) {
+          opacity: 1;
+        }
+      }
+    }
 
     .user {
       &__photo {
@@ -82,9 +121,9 @@ defineProps({
       }
 
       &__label {
-        max-width: 75%;
+        width: 100px;
         h4 {
-          color: #1d2228;
+          color: $charcoal;
           font-size: 14px;
           line-height: 16px;
           overflow: hidden;
@@ -93,15 +132,73 @@ defineProps({
         }
 
         p {
-          background: linear-gradient(270deg, rgb(135, 67, 255), rgb(65, 54, 241));
+          background: $gradient;
           background-clip: text;
           -webkit-background-clip: text;
           margin: 0;
           font-size: 12px;
-
           overflow: hidden;
           white-space: nowrap;
           text-overflow: ellipsis;
+        }
+      }
+    }
+  }
+
+  &_follower {
+    @include media-breakpoint-down(sm) {
+      gap: 8px;
+    }
+    .user {
+      &__photo {
+        @include media-breakpoint-down(sm) {
+          width: 40px;
+          height: 40px;
+          border-radius: 8px;
+        }
+      }
+
+      &__label {
+        h4 {
+          @include media-breakpoint-down(sm) {
+            font-size: 14px;
+            line-height: 16px;
+            max-width: 150px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
+
+          @include media-breakpoint-down(xs) {
+            max-width: 100px;
+          }
+        }
+
+        p {
+          @include media-breakpoint-down(sm) {
+            margin: 0;
+            font-size: 10px;
+            max-width: 150px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
+
+          @include media-breakpoint-down(xs) {
+            max-width: 100px;
+          }
+        }
+      }
+    }
+  }
+
+  &_profile {
+    cursor: unset;
+
+    &:hover {
+      .user__label {
+        @include media-breakpoint-up(md) {
+          opacity: 1;
         }
       }
     }

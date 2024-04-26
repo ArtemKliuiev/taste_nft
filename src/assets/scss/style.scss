@@ -2,14 +2,14 @@
 @import 'base/reset';
 @import "base/base";
 
+
 body {
   font-family: Raleway;
-  background: #1d2228;
-  color: rgb(255, 255, 255);
+  background: $charcoal;
+  color: $white;
 }
 
 .container {
-  height: 100%;
   width: 100%;
   max-width: 1366px;
   margin: 0 auto;
@@ -19,3 +19,36 @@ body {
     padding: 0 15px;
   }
 }
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+
+::-webkit-scrollbar {
+  @include media-breakpoint-up(sm) {
+    width:6px;
+  }
+}
+
+
+::-webkit-scrollbar-thumb {
+  @include media-breakpoint-up(sm) {
+    background: $whiteOpacity;
+    border-radius: 4px 0 0 4px;
+  }
+
+
+  &:hover {
+    @include media-breakpoint-up(md) {
+      background: $gradient;
+    }
+  }
+}
+
+

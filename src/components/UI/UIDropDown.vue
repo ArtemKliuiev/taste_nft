@@ -24,7 +24,7 @@ import { ref, onMounted } from 'vue'
 defineProps(['list', 'id'])
 const emit = defineEmits(['submit'])
 
-const dropActive = ref(false)
+let dropActive = ref(false)
 const selected = ref('')
 const currentDrop = ref(null)
 
@@ -64,7 +64,7 @@ function checkClick(e) {
   &__btn {
     width: 100%;
     height: 40px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid $whiteOpacityThree;
     border-radius: 20px;
     display: flex;
     align-items: center;
@@ -101,11 +101,11 @@ function checkClick(e) {
     overflow: hidden;
     position: absolute;
     z-index: 10;
-    top: 41px;
+    top: 42px;
     width: 100%;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid $whiteOpacityThree;
     border-radius: 20px;
-    background: #1d2228;
+    background: $charcoal;
     max-height: 150px;
     overflow-y: auto;
     opacity: 0;
@@ -129,8 +129,8 @@ function checkClick(e) {
       text-overflow: ellipsis;
 
       &:hover {
-        background-color: #fff;
-        color: #1d2228;
+        background-color: $whiteOpacity;
+        color: $charcoal;
         transition:
           color 300ms ease,
           background-color 300ms ease;
@@ -154,11 +154,11 @@ function checkClick(e) {
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: rgb(255 255 255 / 60%);
+    background-color: $whiteOpacityOne;
     border-radius: 3px;
 
     &:hover {
-      background-color: rgb(255 255 255 / 100%);
+      background-color: $white;
     }
   }
   ::-webkit-scrollbar {

@@ -2,6 +2,7 @@
   <div class="auction-banner">
     <picture>
       <source type="image/webp" :srcset="image.webp" />
+      //переделать
       <img
         class="auction-banner__background"
         :src="image.src"
@@ -57,66 +58,60 @@
       </div>
 
       <div class="auction-banner__label-btn">
-        <UIButton>Place a bid</UIButton>
+        <UIButton @click="modal = true">Place a bid</UIButton>
       </div>
     </div>
   </div>
+
+  <UIAuctionModal @place="place" v-if="modal" @closeModal="modal = false" />
+  <UILoadingModal block="true" v-if="loading" @closeModal="loading = false" :loadingState="3" />
 </template>
 
 <script setup>
+import { countdown } from '@/components/composable/timer.js'
 import { defineProps, ref, onMounted } from 'vue'
 import UIButton from '@/components/UI/UIButton.vue'
+import UIAuctionModal from '@/components/UI/modal/UIAuctionModal.vue'
+import UILoadingModal from '@/components/UI/modal/UILoadingModal.vue'
+import { useToastStore } from '@/data/store/store.js'
 
 const props = defineProps({
   image: Object,
   type: String,
   price: Object
 })
-
+const useToast = useToastStore()
+const loading = ref(false)
+const modal = ref(false)
 const timer = ref(props.price.time)
-function countdown(hours) {
-  if (hours < 1 || hours > 24) {
-    return
-  }
-
-  let totalSeconds = hours * 3600
-
-  let interval = setInterval(function () {
-    let hoursLeft = Math.floor(totalSeconds / 3600)
-    let minutesLeft = Math.floor((totalSeconds % 3600) / 60)
-    let secondsLeft = totalSeconds % 60
-
-    timer.value =
-      (hoursLeft < 10 ? '0' : '') +
-      hoursLeft +
-      'h ' +
-      (minutesLeft < 10 ? '0' : '') +
-      minutesLeft +
-      'm ' +
-      (secondsLeft < 10 ? '0' : '') +
-      secondsLeft +
-      's'
-
-    if (totalSeconds === 0) {
-      clearInterval(interval)
-    } else {
-      totalSeconds--
-    }
-  }, 1000)
-}
 
 onMounted(() => {
-  countdown(props.price.time)
-  timer.value = `${timer.value}h 00m 00s`
+  countdown(props.price.time, timer)
 })
+
+//Вынести в компосибл
+function toast(text) {
+  useToast.info.text = text
+  useToast.info.current++
+}
+
+function place() {
+  modal.value = false
+  loading.value = true
+
+  setTimeout(() => {
+    loading.value = false
+    toast('Your bid will be added soon')
+  }, 1000)
+}
 </script>
 
 <style scoped lang="scss">
-@import "@/assets/scss/base/base.scss";
+@import '@/assets/scss/base/base.scss';
 
 .auction-banner {
   position: relative;
-  padding-top: 44%;
+  padding-top: 44.3%;
 
   @include media-breakpoint-down(xs) {
     padding-top: unset;
@@ -136,11 +131,11 @@ onMounted(() => {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(48, 54, 61, 1);
+    background: $midnight;
     border-radius: 16px;
     padding: 15px 20px;
     font-family: Raleway, sans-serif;
-    bottom: -35px;
+    bottom: -33px;
     display: flex;
     min-width: 350px;
     gap: 38px;
@@ -158,7 +153,7 @@ onMounted(() => {
       position: absolute;
       left: 50%;
       top: 50%;
-      background: rgba(255, 255, 255, 0.15);
+      background: $whiteOpacityTwo;
       width: 3px;
       height: 60%;
       border-radius: 12px;
@@ -173,7 +168,7 @@ onMounted(() => {
       margin: 0;
       font-weight: 600;
       font-size: 14px;
-      color: rgba(255, 255, 255, 0.5);
+      color: $whiteOpacity;
     }
 
     .price {
@@ -187,11 +182,11 @@ onMounted(() => {
 
       p {
         font-weight: 600;
-        color: white;
+        color: $white;
         font-size: 16px;
 
         span {
-          color: rgba(255, 255, 255, 0.5);
+          color: $whiteOpacity;
         }
       }
     }
@@ -207,7 +202,7 @@ onMounted(() => {
         width: 100%;
         height: 2px;
         bottom: -20px;
-        background: rgba(255, 255, 255, 0.15);
+        background: $whiteOpacityTwo;
         display: none;
 
         @include media-breakpoint-down(xs) {
@@ -245,7 +240,7 @@ onMounted(() => {
           position: absolute;
           top: 50%;
           right: -20px;
-          background: rgba(255, 255, 255, 0.15);
+          background: $whiteOpacityTwo;
           width: 3px;
           height: 100%;
           border-radius: 12px;

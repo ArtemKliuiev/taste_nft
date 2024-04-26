@@ -12,9 +12,13 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "pinia": "^2.1.7",
+    "scroll-lock": "^2.1.5",
     "swiper": "^11.1.0",
+    "vee-validate": "^4.12.6",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0",
+    "vue-toasted": "^1.1.28",
     "vue3-swiper": "^1.0.0"
   },
   "devDependencies": {
